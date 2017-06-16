@@ -9,7 +9,7 @@
  	<div id="userGuess"></div>
  	<div id="guessLeft"></div>
  	<div id="score"></div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
  	// Word list array
  var wordsList = [
@@ -21,6 +21,11 @@
  					"woodsman"
  				];
  				
+ // clear any previous information on the screen
+ 	document.getElementById("answers").innerHTML = "";
+ 	document.getElementById("userGuess").innerHTML = "";
+ 	document.getElementById("guessLeft").innerHTML = "";
+ 	document.getElementById("score").innerHTML = "";
  // Pick a random word
  	var word = wordsList[Math.floor(Math.random() * wordsList.length)];
  // Set up the answer array
