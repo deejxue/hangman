@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+ 		<title>Hangman!</title>
+	</head>
+		<body>
+ 			<h1>Hangman!</h1>
+ 	<div id="answers"></div>
+ 	<div id="userGuess"></div>
+ 	<div id="guessLeft"></div>
+ 	<div id="score"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+ 	// Word list array
+ var wordsList = [
+ 					"Jupiter",
+ 					"monkey",
+ 					"seasons",
+ 					"octopus",
+ 					"diving",
+ 					"woodsman"
+ 				];
+ 				
+ // clear any previous information on the screen
+ 	document.getElementById("answers").innerHTML = "";
+ 	document.getElementById("userGuess").innerHTML = "";
+ 	document.getElementById("guessLeft").innerHTML = "";
+ 	document.getElementById("score").innerHTML = "";
+ // Pick a random word
+ 	var word = wordsList[Math.floor(Math.random() * wordsList.length)];
+ // Set up the answer array
+ 	var answerArray = [];
+ 	for (var i = 0; i < word.length; i++) {
+ 		answerArray[i] = "_";
+ 		}
+ 	var remainingLetters = word.length;
+ 	var remainingGuesses = 15;
+ 	// The game loop
+ 	while (remainingLetters > 0) {
+ 	// Show the player their progress
+ 		alert(answerArray.join(" "));
+ 	// Get a guess from the player
+  	var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+ 	if (guess === null) {
+ 	// Exit the game loop
+ 		break;
+ 	} else if (guess.length !== 1) {
+ 		alert("Please enter a single letter.");
+ 	} else {
+ 	// Update the game state with the guess
+ 	remainingGuesses--;  // decrease guess count by one
+ 	console.log('remainingGuesses', remainingGuesses);
+ 	console.log('remainingLetters', remainingLetters);
+ 	for (var j = 0; j < word.length; j++) {
+ 		if (word[j] === guess) {
+ 		answerArray[j] = guess;
+ 		remainingLetters--;
+ 		}
+ 		
+ 		
+ 	}
+ 		// remainingGuesses--;  // decrease guess count by one
+ 		if (remainingGuesses===0) {
+ 			document.getElementById("guessLeft").innerHTML = "Oh man, you ran out of guesses!";
+ 			break;
+ 		console.log('remainingLetters', remainingLetters);
+ 		console.log('remainingGuesses', remainingGuesses);
+ 
+ }
+ }
+
+ // The end of the game loop
+ }
+
+ // Show the answer and congratulate the player
+ 	document.querySelector(answerArray.join(" "));
+ 	document.getElementById("answers").innerHTML = "Good job! The answer was " + word + ".";
+ 	console.log('answers', word);
+
+ // Show the answer and congratulate the player
+ // alert(answerArray.join(" "));
+ // alert("Good job! The answer was " + word);
+ </script>
+</body>
+</html>
